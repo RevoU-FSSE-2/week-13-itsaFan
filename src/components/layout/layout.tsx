@@ -1,19 +1,20 @@
 import { Layout, Breadcrumb } from "antd";
 import PageHeader from "./header";
 import Navbar from "./navbar";
-import { ReactNode, useContext } from "react";
+import { useContext } from "react";
 import classes from "./css/layout.module.css";
 import { useState, useEffect } from "react";
 import AuthContext from "../../context/auth-context";
+import { Outlet } from "react-router-dom";
 
 const { Content } = Layout;
 
-type Props = {
-  children: ReactNode;
-};
+// type Props = {
+//   children: ReactNode;
+// };
 
-export default function UserLayout(props: Props) {
-  const {currentUser} = useContext(AuthContext)
+export default function UserLayout() {
+  const { currentUser } = useContext(AuthContext);
   const [mediaWidth, setMediaWidth] = useState(window.innerWidth);
   useEffect(() => {
     const autoResize = () => {
@@ -29,10 +30,8 @@ export default function UserLayout(props: Props) {
     <Layout>
       <PageHeader className={classes.header} />
       <Layout>
-        {currentUser.username ? ( 
-          <Navbar className={classes.nav} mediaWidth={mediaWidth} />
-        ) : null}
-        {currentUser.username ? ( 
+        {currentUser.username ? <Navbar className={classes.nav} mediaWidth={mediaWidth} /> : null}
+        {currentUser.username ? (
           <Layout className={classes.layoutContainer}>
             <Breadcrumb
               className={classes.breadcrumb}
@@ -48,10 +47,14 @@ export default function UserLayout(props: Props) {
                 },
               ]}
             />
-            <Content className={classes.content}>{props.children}</Content>
+            <Content className={classes.content}>
+              <Outlet />
+            </Content>
           </Layout>
         ) : (
-          <Content className={classes.content}>{props.children}</Content>
+          <Content className={classes.content}>
+            <Outlet />
+          </Content>
         )}
       </Layout>
     </Layout>
