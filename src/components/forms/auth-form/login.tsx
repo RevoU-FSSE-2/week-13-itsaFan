@@ -18,6 +18,8 @@ export default function Login() {
     },
   });
 
+  const [error, setError] = useState("");
+
   const handleSubmit = async (data: handleData) => {
     try {
       const accessToken = await loginApi(data.username, data.password);
@@ -26,14 +28,20 @@ export default function Login() {
 
       navigate("/dashboard");
       window.location.reload();
-    } catch (error) {
+    } catch (error: any) {
       console.error("Login failed:", error);
+      if (error.response && error.response.data && error.response.data.message) {
+        setError(error.response.data.message);
+      } else {
+        setError("An error occurred during login.");
+      }
     }
   };
 
   return (
     <Card style={{ width: 400 }} title="Login">
       <div>
+        {error && <div style={{ color: "red" }}>{error}</div>}
         <LoginForm initialValues={formData.loginData} onLogin={handleSubmit} />
       </div>
     </Card>

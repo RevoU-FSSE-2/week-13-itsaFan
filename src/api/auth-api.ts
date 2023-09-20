@@ -19,13 +19,12 @@ export const loginApi = async (username: string, password: string) => {
     return response.data.accessToken;
   } catch (error) {
     console.error(error);
+    throw error;
   }
 };
 
-export const getUserLoginApi = async (token) => {
+export const getUserLoginApi = async (token: string) => {
   return await axios.get(`${BASE_URL}/me`, {
-    headers: { Authorization: `Bearer ${token}`}
-  })
-}
-
-
+    headers: { Authorization: `Bearer ${token}` },
+  });
+};
