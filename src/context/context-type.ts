@@ -1,5 +1,5 @@
 export const user_type = {
-  id: "",
+  _id: "",
   username: "",
   email: "",
   password: "",

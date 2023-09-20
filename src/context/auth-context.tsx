@@ -25,8 +25,8 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
 
   const contextValue = {
     currentUser: {
-      id: user.id,
-      username: user.password,
+      _id: user._id,
+      username: user.username,
       email: user.email,
       password: user.password,
       role: user.role,

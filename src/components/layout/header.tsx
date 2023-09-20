@@ -17,6 +17,7 @@ export default function PageHeader({ className }: Props) {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const { currentUser, logout } = useContext(AuthContext);
+  // console.log(currentUser)
   function handleLogout() {
     logout();
     navigate("/");
@@ -32,22 +33,18 @@ export default function PageHeader({ className }: Props) {
   const items: MenuProps["items"] = [
     {
       key: "1",
-      label: (
-        <a target="" rel="" href="">
-          Setting
-        </a>
-      ),
+      label: <p>{currentUser.email}</p>,
     },
     {
       key: "2",
-      label: (
-        <a target="k" rel="noopener noreferrer" href="">
-          Account
-        </a>
-      ),
+      label: <p>Role: {currentUser.role}</p>,
     },
     {
-      key: "3",
+      type: "divider",
+    },
+    {
+      key: "4",
+      danger: true,
       label: <a onClick={handleLogout}>Logout</a>,
     },
   ];
@@ -56,7 +53,9 @@ export default function PageHeader({ className }: Props) {
       <img src={itsaFanLogo} alt="logo" width={120} height={30} />
       {currentUser.username ? (
         <Dropdown menu={{ items }} placement="bottom" arrow>
-          <Avatar size="large" icon={<UserOutlined />} className="bg-slate-50" />
+          <Avatar size="large" className="bg-rose-500">
+            <p className="text-slate-200">{currentUser.username}</p>
+          </Avatar>
         </Dropdown>
       ) : (
         <div onClick={openModal}>
