@@ -4,6 +4,7 @@ import RegistrationForm from "./reg-form";
 import { registerApi } from "../../../api/auth-api";
 import { User } from "../../../helpers/api-interface";
 
+
 export default function Registration() {
   const [formData] = useState({
     registrationData: {
