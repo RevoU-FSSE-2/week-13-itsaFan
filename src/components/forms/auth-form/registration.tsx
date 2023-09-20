@@ -23,7 +23,7 @@ export default function Registration() {
   };
 
   return (
-    <Card style={{ width: 400 }}>
+    <Card style={{ width: 400 }} title="Register">
       <div>
         <RegistrationForm initialValues={formData.registrationData} onRegister={handleSubmit} />
       </div>

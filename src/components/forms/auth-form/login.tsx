@@ -27,7 +27,7 @@ export default function Login() {
   };
 
   return (
-    <Card>
+    <Card style={{ width: 400 }}>
       <div>
         <LoginForm initialValues={formData.loginData} onLogin={handleSubmit} />
       </div>

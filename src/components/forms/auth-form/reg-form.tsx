@@ -3,6 +3,7 @@ import { RegistrationProps } from "../../../helpers/form-interface";
 import { registerSchema } from "../../../helpers/validation-schema";
 import { Formik, Form as FormikForm, Field, ErrorMessage } from "formik";
 
+
 export default function RegistrationForm({ initialValues, onRegister }: RegistrationProps) {
   return (
     <Formik
