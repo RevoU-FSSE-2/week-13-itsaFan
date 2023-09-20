@@ -9,3 +9,15 @@ export const registerApi = async (user: User) => {
     password: user.password,
   });
 };
+
+export const loginApi = async (username: string, password: string) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/login`, {
+      username,
+      password,
+    });
+    return response.data.accessToken;
+  } catch (error) {
+    console.error(error);
+  }
+};
