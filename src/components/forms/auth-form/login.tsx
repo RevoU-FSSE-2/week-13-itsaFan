@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Card } from "antd";
 import LoginForm from "./login-form";
 import { loginApi } from "../../../api/auth-api";
+import { useNavigate } from "react-router-dom";
 
 type handleData = {
   username: string;
@@ -9,6 +10,7 @@ type handleData = {
 };
 
 export default function Login() {
+  const navigate = useNavigate();
   const [formData] = useState({
     loginData: {
       username: "",
@@ -20,14 +22,17 @@ export default function Login() {
     try {
       const accessToken = await loginApi(data.username, data.password);
       console.log("Login successful. Access Token:", accessToken);
-      localStorage.setItem("accessToken", accessToken); //simpan accessToken di localstorage
+      localStorage.setItem("accessToken", accessToken);
+
+      navigate("/dashboard");
+      window.location.reload();
     } catch (error) {
       console.error("Login failed:", error);
     }
   };
 
   return (
-    <Card style={{ width: 400 }}>
+    <Card style={{ width: 400 }} title="Login">
       <div>
         <LoginForm initialValues={formData.loginData} onLogin={handleSubmit} />
       </div>

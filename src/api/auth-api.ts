@@ -21,3 +21,11 @@ export const loginApi = async (username: string, password: string) => {
     console.error(error);
   }
 };
+
+export const getUserLoginApi = async (token) => {
+  return await axios.get(`${BASE_URL}/me`, {
+    headers: { Authorization: `Bearer ${token}`}
+  })
+}
+
+

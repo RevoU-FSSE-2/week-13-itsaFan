@@ -4,6 +4,7 @@ import { LoginProps } from "../../../helpers/form-interface";
 import { loginSchema } from "../../../helpers/validation-schema";
 
 export default function LoginForm({ initialValues, onLogin }: LoginProps) {
+  
   return (
     <Formik
       initialValues={initialValues}
@@ -20,7 +21,7 @@ export default function LoginForm({ initialValues, onLogin }: LoginProps) {
             <ErrorMessage name="username" component="div" className="" />
           </div>
           <div>
-            <Field name="password" as={Input} placeholder="password" />
+            <Field name="password" as={Input} type="password" placeholder="password" />
             <ErrorMessage name="password" component="div" className="" />
           </div>
           <Button type="primary" htmlType="submit" className="bg-blue-700">
