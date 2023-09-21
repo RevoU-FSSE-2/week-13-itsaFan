@@ -14,3 +14,31 @@ export type LoginProps = {
   };
   onLogin: (data: { username: string; password: string }) => void;
 };
+
+export type Project = {
+  _id: string;
+  projectName: string;
+  assignedGroup: {
+    _id: string;
+    members: Member[];
+  };
+};
+
+export type Member = {
+  _id: string;
+  username: string;
+};
+
+// interface Project {
+//   _id: string;
+//   projectName: string;
+//   assignedGroup: {
+//     _id: string;
+//     members: Member[];
+//   };
+// }
+
+// interface Member {
+//   _id: string;
+//   username: string;
+// }
