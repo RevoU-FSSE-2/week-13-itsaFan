@@ -28,7 +28,7 @@ export default function TasksTable() {
       try {
         const response = await getTasks(token);
         // console.log(response)
-        setTasks(response.tasks);
+        setTasks(response.tasks.reverse());
       } catch (error) {
         console.error("Error fetching tasks:", error);
       }
