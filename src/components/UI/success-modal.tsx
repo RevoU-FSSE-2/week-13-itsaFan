@@ -1,25 +1,27 @@
 import { Modal, Button } from "antd";
 
 type Props = {
+  title: string;
+  textBody: string;
+  isOpen: boolean;
   onClose: () => void;
-  visible: boolean;
 };
 
-export default function SuccessModal({ visible, onClose }: Props) {
+export default function SuccessModal({ isOpen, onClose, title, textBody }: Props) {
   return (
     <Modal
-      title="Register Success"
+      title={title}
       centered
-      open={visible}
+      open={isOpen}
       onOk={onClose}
       onCancel={onClose}
       footer={[
-        <Button key="ok" type="primary" onClick={onClose} href="/">
+        <Button key="ok" type="primary" onClick={onClose}>
           OK
         </Button>,
       ]}
     >
-      Thank you for registering!
+      {textBody}
     </Modal>
   );
 }
