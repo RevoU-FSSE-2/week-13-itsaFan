@@ -9,6 +9,7 @@ interface Task {
   title: string;
   description: string;
   priority: string;
+  dueDate: string;
   status: string;
   assignedTo: {
     username: string;
@@ -26,6 +27,7 @@ export default function TasksTable() {
     const fetchData = async () => {
       try {
         const response = await getTasks(token);
+        // console.log(response)
         setTasks(response.tasks);
       } catch (error) {
         console.error("Error fetching tasks:", error);
@@ -56,6 +58,16 @@ export default function TasksTable() {
       key: "status",
       render: (status) => <Tag color={status === "completed" ? "green" : "red"}>{status}</Tag>,
     },
+    {
+      title: "Due Date",
+      dataIndex: "dueDate",
+      key: "dueDate",
+      render: (dueDate) => {
+        const date = new Date(dueDate);
+        const formattedDate = date.toISOString().split("T")[0];
+        return formattedDate;
+      },
+    },
     // {
     //   title: "Assigned To",
     //   dataIndex: "assignedTo",
@@ -67,6 +79,7 @@ export default function TasksTable() {
       key: "action",
       render: () => (
         <Space size="middle">
+          <a>View</a>
           <a>Edit</a>
           <a>Delete</a>
         </Space>
