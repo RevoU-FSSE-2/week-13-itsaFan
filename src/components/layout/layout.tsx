@@ -42,9 +42,6 @@ export default function UserLayout() {
                 {
                   title: <a href="">Dashboard</a>,
                 },
-                {
-                  title: <a href="">Account</a>,
-                },
               ]}
             />
             <Content className={classes.content}>
