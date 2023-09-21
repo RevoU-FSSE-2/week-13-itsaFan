@@ -16,7 +16,7 @@ export default function SuccessModal({ isOpen, onClose, title, textBody }: Props
       onOk={onClose}
       onCancel={onClose}
       footer={[
-        <Button key="ok" type="primary" onClick={onClose}>
+        <Button key="ok" type="primary" onClick={onClose} className="bg-blue-500">
           OK
         </Button>,
       ]}
