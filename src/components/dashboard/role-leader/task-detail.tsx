@@ -2,15 +2,21 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import AuthContext from "../../../context/auth-context";
 import { getSingleTask } from "../../../api/leader-api";
-
-interface TaskData {
-  title: string;
-  description: string;
-}
+import TaskDetailLogistics from "./task-content";
 
 export default function SingleTaskView() {
   const { taskId } = useParams<{ taskId: string | undefined }>();
-  const [task, setTask] = useState<TaskData>({ title: "", description: "" });
+  const [task, setTask] = useState({
+    project: "",
+    title: "",
+    description: "",
+    dueDate: "",
+    priority: "",
+    status: "",
+    assignedTo: { _id: "", username: "" },
+    createdBy: { _id: "", username: "" },
+    group: { _id: "", name: "" },
+  });
   const { token } = useContext(AuthContext);
 
   useEffect(() => {
@@ -29,10 +35,8 @@ export default function SingleTaskView() {
   }, [token, taskId]);
 
   return (
-    <div>
-      <h2>Task Details</h2>
-      <p>Title: {task.title}</p>
-      <p>Description: {task.description}</p>
-    </div>
+    <>
+      <TaskDetailLogistics task={task} />
+    </>
   );
 }

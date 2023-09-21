@@ -40,7 +40,7 @@ export default function UserLayout() {
                   title: "Home",
                 },
                 {
-                  title: <a href="">Dashboard</a>,
+                  title: <a href="/dashboard">Dashboard</a>,
                 },
               ]}
             />
