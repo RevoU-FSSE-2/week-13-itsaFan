@@ -15,6 +15,7 @@ export default function Registration() {
   });
 
   const handleSubmit = async (user: User) => {
+    console.log("Button clicked!"); 
     try {
       await registerApi(user);
       console.log(`Registration success`, user);
