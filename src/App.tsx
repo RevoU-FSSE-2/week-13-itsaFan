@@ -5,6 +5,7 @@ import DashboardPage from "./pages/dashboard-page";
 import { useContext } from "react";
 import AuthContext from "./context/auth-context";
 import UserLayout from "./components/layout/layout";
+import TaskDetailPage from "./pages/task-detail-page";
 
 function App() {
   const { isLoggedIn, currentUser } = useContext(AuthContext);
@@ -21,13 +22,15 @@ function App() {
           path: "/dashboard",
           element: isLoggedIn ? <DashboardPage /> : <Navigate to="/" />,
         },
+        {
+          path: "/dashboard/task-detail/:taskId",
+          element: isLoggedIn ? <TaskDetailPage /> : <Navigate to="/" />,
+        },
       ],
     },
   ]);
 
-  return (
-      <RouterProvider router={router} />
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

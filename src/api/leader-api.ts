@@ -46,3 +46,16 @@ export const createTask = async (token: string, formData: FormData  ) => {
     throw error;
   }
 };
+
+
+export const getSingleTask = async (taskId: string, token: string) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/leader/task/${taskId}`, {
+      headers: {Authorization: `Bearer ${token}`}
+    })
+    return response.data
+  } catch (error) {
+    console.error("Fail to get single task", error)
+    throw error;
+  }
+}

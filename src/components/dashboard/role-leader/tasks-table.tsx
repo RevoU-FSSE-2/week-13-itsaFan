@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { getTasks } from "../../../api/leader-api";
 import { Table, Tag, Space } from "antd";
 import type { ColumnsType } from "antd/es/table";
+import { Link } from "react-router-dom";
 
 interface Task {
   _id: string;
@@ -77,9 +78,9 @@ export default function TasksTable() {
     {
       title: "Action",
       key: "action",
-      render: () => (
+      render: (task) => (
         <Space size="middle">
-          <a>View</a>
+          <Link to={`/dashboard/task-detail/${task._id}`}>View</Link>
           <a>Edit</a>
           <a>Delete</a>
         </Space>
