@@ -2,6 +2,8 @@ import { TaskData } from "../../../helpers/content-interface";
 import { Button, Descriptions } from "antd";
 import type { DescriptionsProps } from "antd";
 
+import EditTask from "./edit-task";
+
 type Props = {
   task: TaskData;
 };
@@ -9,6 +11,7 @@ type Props = {
 export default function TaskDetailLogistics({ task }: Props) {
   const dueDateParts = task.dueDate.split("T");
   const formattedDueDate = dueDateParts[0];
+
 
   const items: DescriptionsProps["items"] = [
     {
@@ -49,9 +52,7 @@ export default function TaskDetailLogistics({ task }: Props) {
         items={items}
         extra={
           <>
-            <Button className="bg-cyan-500 hover:bg-opacity-80 border-none mr-2">
-              <p className="text-white">Edit</p>
-            </Button>
+            <EditTask />
             <Button className="bg-red-500 hover:bg-opacity-80 border-none">
               <p className="text-white">Delete</p>
             </Button>

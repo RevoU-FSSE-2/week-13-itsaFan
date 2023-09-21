@@ -18,3 +18,19 @@ export interface TaskData {
     name: string;
   };
 }
+
+export interface EditTask {
+  title: string;
+  description: string;
+  dueDate: string;
+  priority: string;
+}
+export type EditTaskProps = {
+  initialValues: {
+    title: string;
+    description: string;
+    dueDate: string;
+    priority: string;
+  };
+  onSubmit: (data: { title: string; description: string; dueDate: string; priority: string }) => void;
+};

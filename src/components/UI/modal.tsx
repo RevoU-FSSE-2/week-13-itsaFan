@@ -1,9 +1,11 @@
 import { Button, Modal as AntModal } from "antd";
-import { useState, ReactNode } from "react";
+import { useState, ReactNode, CSSProperties } from "react";
 
 type Props = {
   children: ReactNode;
   className?: string;
+  buttonTitle: string;
+  bodyStyle?: CSSProperties;
 };
 
 export default function Modal(props: Props) {
@@ -16,12 +18,13 @@ export default function Modal(props: Props) {
   };
   return (
     <>
-      <Button onClick={openModal}  className="bg-green-600 hover:bg-opacity-80 mb-2">
-        <p className="text-white">+ Add</p>
+      <Button onClick={openModal}  className={props.className}>
+        <p className="text-white">{props.buttonTitle}</p>
       </Button>
-      <AntModal  width={320} bodyStyle={{ margin: "90px 0 0 0" }} centered  open={showModal} onCancel={exitModal} footer={null} className={props.className}>
+      <AntModal  width={320} bodyStyle={props.bodyStyle} centered  open={showModal} onCancel={exitModal} footer={null}>
         {props.children}
       </AntModal>
     </>
   );
 }
+// bodyStyle={{ margin: "90px 0 0 0" }}
