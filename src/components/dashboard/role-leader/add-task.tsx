@@ -6,12 +6,14 @@ import CardBorder from "../../UI/card-border";
 import { Button } from "antd";
 import SuccessModal from "../../UI/success-modal";
 import { Project } from "../../../helpers/form-interface";
+import { useNavigate } from "react-router-dom";
 
 export default function AddTaskForm() {
   const { token } = useContext(AuthContext);
   const [projects, setProjects] = useState<Project[]>([]);
   const [selectedProjectId, setSelectedProjectId] = useState<string>("");
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     project: "",
     title: "",
@@ -64,6 +66,7 @@ export default function AddTaskForm() {
 
   const handleCloseSuccessModal = () => {
     setIsSuccessModalOpen(false);
+    navigate("/dashboard");
   };
 
   return (
@@ -105,6 +108,7 @@ export default function AddTaskForm() {
             <label className="font-semibold">Priority:</label>
             <div>
               <select name="priority" value={formData.priority} onChange={handleInputChange} className="w-full h-10 border border-gray-800 px-3 rounded-lg" required>
+                <option value="">Select priority</option>
                 <option>low</option>
                 <option>medium</option>
                 <option>high</option>
@@ -133,7 +137,7 @@ export default function AddTaskForm() {
               Create Task
             </Button>
 
-            <SuccessModal isOpen={isSuccessModalOpen} onClose={handleCloseSuccessModal} title="Success!" textBody="Your Task Has Been Created Successfully" />
+            <SuccessModal isOpen={isSuccessModalOpen} onClose={handleCloseSuccessModal} title="Success!" textBody="Your Task Has Been Created Successfuly" />
           </div>
         </form>
       </CardBorder>
