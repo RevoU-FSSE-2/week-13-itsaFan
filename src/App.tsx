@@ -8,7 +8,7 @@ import UserLayout from "./components/layout/layout";
 import TaskDetailPage from "./pages/task-detail-page";
 
 function App() {
-  const { isLoggedIn, currentUser } = useContext(AuthContext);
+  const { isLoggedIn } = useContext(AuthContext);
 
   const router = createBrowserRouter([
     {
