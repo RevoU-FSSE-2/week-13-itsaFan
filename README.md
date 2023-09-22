@@ -15,10 +15,13 @@ This project is made for RevoU assignment.<br>
 The purpose of this assignment is to learn React conepts and features. Learnig about React Lifecycle methods and how to use them in components. Exploring Hooks and how to use them to manage state and other features. Understand React Context to manage global state in our ap.
 
 - This App Features:
-  - Login
   - Register
+  - Login
   - Show All Tasks
+  - Filter task `priority` and `status`
   - Create Task
+  - Prevent creating the same task `title`
+  - View single task
   - Edit Task
   - Delete Task
   - Token Authorization
@@ -31,18 +34,23 @@ The purpose of this assignment is to learn React conepts and features. Learnig a
 3. Run `npx vite` to start the project.
 4. Visit the link & see further guide there on `landing page`.
 5. Don't forget to login with this data:
+
 ```json
 {
   "username": "Leader",
   "password": "zxc12345"
 }
 ```
+6. You can try register an account, then login with that registered account.
+7. Since default registered account role is set to `user`, you will receive this instead on `Dashboard page`:
+![user login](readme_img/image.png)
 
 ## Website Link
 
 Click here: [Steff-Revou-Week13](https://steff-revou-week13.netlify.app/)
 
 ## Website Preview
+
 <table>
   <tr>
     <td align="center" style="vertical-align: top;">
