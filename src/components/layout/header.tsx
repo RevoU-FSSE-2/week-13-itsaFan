@@ -63,7 +63,7 @@ export default function PageHeader({ className }: Props) {
         </div>
       )}
 
-      <Modal centered open={showModal} onCancel={exitModal} footer={null} width={300} bodyStyle={{ margin: "10px 0 0 0" }}>
+      <Modal centered open={showModal} onCancel={exitModal} footer={null} width={300} bodyStyle={{ margin: "0" }}>
         <Login />
       </Modal>
     </Header>

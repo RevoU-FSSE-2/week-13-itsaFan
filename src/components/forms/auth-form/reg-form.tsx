@@ -15,20 +15,20 @@ export default function RegistrationForm({ initialValues, onRegister }: Registra
       }}
     >
       {() => (
-        <FormikForm>
+        <FormikForm className="space-y-5">
           <div>
-            <Field name="username" as={Input} placeholder="Username" />
-            <ErrorMessage name="username" component="div" className={classes.error} />
+            <Field name="username" as={Input} placeholder="Username"  className="w-full h-12 border border-gray-800 px-3 rounded-lg" />
+            <ErrorMessage name="username" component="div" className={classes.error}  />
           </div>
           <div>
-            <Field name="email" as={Input} placeholder="Email Address" />
+            <Field name="email" as={Input} placeholder="Email Address"  className="w-full h-12 border border-gray-800 px-3 rounded-lg" />
             <ErrorMessage name="email" component="div" className={classes.error} />
           </div>
           <div>
-            <Field name="password" as={Input} placeholder="password" />
+            <Field name="password" as={Input} placeholder="password"  className="w-full h-12 border border-gray-800 px-3 rounded-lg" />
             <ErrorMessage name="password" component="div" className={classes.error} />
           </div>
-          <Button type="primary" htmlType="submit" className="bg-blue-700">
+          <Button type="primary" htmlType="submit" className="w-full h-12 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
             Register
           </Button>
         </FormikForm>

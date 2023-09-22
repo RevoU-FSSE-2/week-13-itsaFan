@@ -1,8 +1,10 @@
-import { Card } from "antd";
 import { useState } from "react";
 import RegistrationForm from "./reg-form";
 import { registerApi } from "../../../api/auth-api";
 import { User } from "../../../helpers/api-interface";
+import CardBorder from "../../UI/card-border";
+import Modal from "../../UI/modal";
+
 
 
 export default function Registration() {
@@ -15,7 +17,7 @@ export default function Registration() {
   });
 
   const handleSubmit = async (user: User) => {
-    console.log("Button clicked!"); 
+    console.log("Button clicked!");
     try {
       await registerApi(user);
       console.log(`Registration success`, user);
@@ -25,10 +27,10 @@ export default function Registration() {
   };
 
   return (
-    <Card style={{ width: 400 }} title="Register">
-      <div>
+    <Modal buttonTitle="No account? Register" className="w-full h-10 bg-rose-400 hover:bg-rose-500 border-none text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+      <CardBorder title="Register">
         <RegistrationForm initialValues={formData.registrationData} onRegister={handleSubmit} />
-      </div>
-    </Card>
+      </CardBorder>
+    </Modal>
   );
 }
