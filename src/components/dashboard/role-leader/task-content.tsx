@@ -1,7 +1,8 @@
 import { TaskData } from "../../../helpers/content-interface";
-import { Button, Descriptions } from "antd";
+import { Descriptions } from "antd";
 import type { DescriptionsProps } from "antd";
 import EditTask from "./edit-task";
+import DeleteTask from "./delete-task";
 
 
 type Props = {
@@ -54,9 +55,7 @@ export default function TaskDetailLogistics({ task }: Props) {
         extra={
           <>
             <EditTask task={task}/>
-            <Button className="bg-red-500 hover:bg-opacity-80 border-none">
-              <p className="text-white">Delete</p>
-            </Button>
+            <DeleteTask />
           </>
         }
       />

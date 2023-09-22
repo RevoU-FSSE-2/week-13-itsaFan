@@ -93,3 +93,14 @@ export const editTask2 = async (taskId: string, newTaskData: EditTask, token: st
   }
 };
 
+export const deleteTask = async (taskId: string, token: string) => {
+  try {
+    const response = await axios.delete(`${BASE_URL}/leader/tasks/delete/${taskId}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Fail to delete task", error);
+    throw error;
+  }
+};
