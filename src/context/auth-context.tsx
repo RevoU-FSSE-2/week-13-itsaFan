@@ -6,7 +6,7 @@ type AuthContextProviderProps = {
   children: ReactNode;
 };
 
-const AuthContext = React.createContext(context_user);
+ const AuthContext = React.createContext(context_user);
 
 export function retrieveStoredToken() {
   const storedToken = localStorage.getItem("accessToken");
@@ -17,7 +17,7 @@ export function retrieveStoredToken() {
 
 export function AuthContextProvider(props: AuthContextProviderProps) {
   const storedToken = retrieveStoredToken();
-  const initialToken = storedToken.token || "";
+  const initialToken = storedToken.token || ''; 
 
   const [token, setToken] = useState(initialToken);
   const [user, setUser] = useState(user_type);
@@ -50,13 +50,15 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
 
   function logoutHandler() {
     localStorage.removeItem("accessToken");
-    setToken("");
+    setToken('')
   }
   function loginHandler(token: string) {
-    localStorage.setItem("accessToken", token);
+    localStorage.setItem('accessToken', token);
   }
 
-  return <AuthContext.Provider value={contextValue}> {props.children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={contextValue}> {props.children}</AuthContext.Provider>
+  )
 }
 
-export default AuthContext;
+export default AuthContext
