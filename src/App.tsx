@@ -1,36 +1,48 @@
-import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import LandingPage from "./pages/landing-page";
 import DashboardPage from "./pages/dashboard-page";
 import { useContext } from "react";
 import AuthContext from "./context/auth-context";
-import UserLayout from "./components/layout/layout";
-import TaskDetailPage from "./pages/task-detail-page";
+// import UserLayout from "./components/layout/layout";
+// import TaskDetailPage from "./pages/task-detail-page";
+//createBrowserRouter, RouterProvider, Navigate,
 
 function App() {
   const { isLoggedIn } = useContext(AuthContext);
 
-  const router = createBrowserRouter([
-    {
-      element: <UserLayout />,
-      children: [
-        {
-          path: "/",
-          element: <LandingPage />,
-        },
-        {
-          path: "/dashboard",
-          element: isLoggedIn ? <DashboardPage /> : <Navigate to="/" />,
-        },
-        {
-          path: "/dashboard/task-detail/:taskId",
-          element: isLoggedIn ? <TaskDetailPage /> : <Navigate to="/" />,
-        },
-      ],
-    },
-  ]);
+  // const router = createBrowserRouter([
+  //   {
+  //     element: <UserLayout />,
+  //     children: [
+  //       {
+  //         path: "/",
+  //         element: <LandingPage />,
+  //       },
+  //       {
+  //         path: "/dashboard",
+  //         element: isLoggedIn ? <DashboardPage /> : <Navigate to="/" />,
+  //       },
+  //       {
+  //         path: "/dashboard/task-detail/:taskId",
+  //         element: isLoggedIn ? <TaskDetailPage /> : <Navigate to="/" />,
+  //       },
+  //     ],
+  //   },
+  // ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+
+      {/* Authenticated Routing */}
+      {isLoggedIn && (
+        <>
+          <Route path="/dashboard" element={<DashboardPage />} />
+        </>
+      )}
+    </Routes>
+  );
 }
 
 export default App;
@@ -50,3 +62,7 @@ export default App;
 //     </>
 //   )}
 // </Routes>
+
+{
+  /* <RouterProvider router={router} /> */
+}

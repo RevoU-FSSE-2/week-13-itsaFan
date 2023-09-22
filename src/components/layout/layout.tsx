@@ -1,19 +1,19 @@
 import { Layout, Breadcrumb } from "antd";
 import PageHeader from "./header";
 import Navbar from "./navbar";
-import { useContext } from "react";
+import { useContext, ReactNode } from "react";
 import classes from "./css/layout.module.css";
 import { useState, useEffect } from "react";
 import AuthContext from "../../context/auth-context";
-import { Outlet } from "react-router-dom";
+// import { Outlet } from "react-router-dom";
 
 const { Content } = Layout;
 
-// type Props = {
-//   children: ReactNode;
-// };
+type Props = {
+  children: ReactNode;
+};
 
-export default function UserLayout() {
+export default function UserLayout( props: Props) {
   const { currentUser } = useContext(AuthContext);
   const [mediaWidth, setMediaWidth] = useState(window.innerWidth);
   useEffect(() => {
@@ -45,12 +45,14 @@ export default function UserLayout() {
               ]}
             />
             <Content className={classes.content}>
-              <Outlet />
+              {/* <Outlet /> */}
+              {props.children}
             </Content>
           </Layout>
         ) : (
           <Content className={classes.content}>
-            <Outlet />
+            {/* <Outlet /> */}
+            {props.children}
           </Content>
         )}
       </Layout>
