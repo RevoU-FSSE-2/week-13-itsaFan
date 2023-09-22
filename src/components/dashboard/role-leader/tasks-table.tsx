@@ -1,7 +1,7 @@
 import AuthContext from "../../../context/auth-context";
 import { useContext, useEffect, useState } from "react";
 import { getTasks } from "../../../api/leader-api";
-import { Table, Tag, Space } from "antd";
+import { Table, Tag, Button } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import { Link } from "react-router-dom";
 
@@ -86,7 +86,11 @@ export default function TasksTable() {
           color = "red";
         }
 
-        return <Tag color={color} className="w-24 text-center uppercase">{status}</Tag>;
+        return (
+          <Tag color={color} className="w-24 text-center uppercase">
+            {status}
+          </Tag>
+        );
       },
     },
     {
@@ -109,11 +113,13 @@ export default function TasksTable() {
       title: "Action",
       key: "action",
       render: (task) => (
-        <Space size="middle">
-          <Link to={`/dashboard/task-detail/${task._id}`}>View</Link>
-          <a>Edit</a>
-          <a>Delete</a>
-        </Space>
+       
+        <Button className="bg-violet-400 hover:bg-opacity-80 border-none ">
+          <Link to={`/dashboard/task-detail/${task._id}`}>
+            <p className="text-white">View Details</p>
+          </Link>
+        </Button>
+      
       ),
     },
   ];
@@ -121,6 +127,8 @@ export default function TasksTable() {
   return (
     <Table
       columns={columns}
+      bordered
+      className="mx-6"
       dataSource={tasks}
       rowKey={(task) => task._id}
       expandable={{

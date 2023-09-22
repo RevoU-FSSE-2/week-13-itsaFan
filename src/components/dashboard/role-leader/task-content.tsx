@@ -49,6 +49,7 @@ export default function TaskDetailLogistics({ task }: Props) {
       <Descriptions
         title="Task Detail: "
         bordered
+        className="m-6"
         items={items}
         extra={
           <>
