@@ -4,8 +4,8 @@ import LandingPage from "./pages/landing-page";
 import DashboardPage from "./pages/dashboard-page";
 import { useContext } from "react";
 import AuthContext from "./context/auth-context";
-// import UserLayout from "./components/layout/layout";
-// import TaskDetailPage from "./pages/task-detail-page";
+import TaskDetailPage from "./pages/task-detail-page";
+
 //createBrowserRouter, RouterProvider, Navigate,
 
 function App() {
@@ -35,12 +35,11 @@ function App() {
     <Routes>
       <Route path="/" element={<LandingPage />} />
 
-      {/* Authenticated Routing */}
-      {isLoggedIn && (
-        <>
+
           <Route path="/dashboard" element={<DashboardPage />} />
-        </>
-      )}
+          <Route path="/dashboard/task-detail/:taskId" element={<TaskDetailPage />}/>
+
+ 
     </Routes>
   );
 }
