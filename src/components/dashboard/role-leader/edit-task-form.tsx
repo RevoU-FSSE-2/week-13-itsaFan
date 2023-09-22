@@ -21,23 +21,23 @@ export default function TaskEditForm({ initialValues, onSubmit }: EditTaskProps)
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="title">Title:</label>
+        <label htmlFor="title" className="font-semibold">Title:</label>
         <div>
           <input type="text" id="title" name="title" value={formData.title} onChange={handleChange} className="w-full h-10 border border-gray-800 px-3 rounded-lg" required />
         </div>
       </div>
       <div>
-        <label htmlFor="description">Description:</label>
+        <label htmlFor="description" className="font-semibold">Description:</label>
         <div></div> <input id="description" name="description" value={formData.description} onChange={handleChange} className="w-full h-10 border border-gray-800 px-3 rounded-lg" required />
       </div>
       <div>
-        <label htmlFor="dueDate">Due Date:</label>
+        <label htmlFor="dueDate" className="font-semibold">Due Date:</label>
         <div>
           <input type="date" id="dueDate" name="dueDate" value={formData.dueDate} onChange={handleChange} className="w-full h-10 border border-gray-800 px-3 rounded-lg" required />
         </div>
       </div>
       <div>
-        <label htmlFor="priority">Priority:</label>
+        <label htmlFor="priority" className="font-semibold">Priority:</label>
         <div>
           <select id="priority" name="priority" value={formData.priority} onChange={handleChange} className="w-full h-10 border border-gray-800 px-3 rounded-lg" required>
             <option>Select Priority</option>

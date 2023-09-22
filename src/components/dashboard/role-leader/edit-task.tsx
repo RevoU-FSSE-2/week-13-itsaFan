@@ -13,16 +13,19 @@ interface Task {
   dueDate: string;
   priority: string;
 }
+interface FilledTaskProps {
+  task: Task;
+}
 
-export default function EditTask() {
+export default function EditTask({ task }: FilledTaskProps) {
   const { taskId } = useParams();
   const { token } = useContext(AuthContext);
 
   const initialValues = {
-    title: "",
-    description: "",
-    dueDate: "",
-    priority: "",
+    title: task.title,
+    description: task?.description,
+    dueDate: task.dueDate,
+    priority: task.priority,
   };
 
   const handleSubmit = async (formData: Task) => {

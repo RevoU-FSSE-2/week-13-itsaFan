@@ -41,23 +41,53 @@ export default function TasksTable() {
     {
       title: "Title",
       dataIndex: "title",
+      className: "capitalize",
       key: "title",
     },
     {
       title: "Description",
       dataIndex: "description",
+      className: "capitalize",
       key: "description",
     },
     {
       title: "Priority",
       dataIndex: "priority",
       key: "priority",
+      render: (priority) => {
+        let color = "white";
+
+        if (priority === "low") {
+          color = "green";
+        } else if (priority === "medium") {
+          color = "blue";
+        } else if (priority === "high") {
+          color = "red";
+        }
+
+        return (
+          <Tag color={color} className="w-16 text-center capitalize">
+            {priority}
+          </Tag>
+        );
+      },
     },
     {
       title: "Status",
       dataIndex: "status",
       key: "status",
-      render: (status) => <Tag color={status === "completed" ? "green" : "red"}>{status}</Tag>,
+      render: (status) => {
+        let color = "white";
+        if (status === "completed") {
+          color = "green";
+        } else if (status === "in-progress") {
+          color = "blue";
+        } else if (status === "pending") {
+          color = "red";
+        }
+
+        return <Tag color={color} className="w-24 text-center uppercase">{status}</Tag>;
+      },
     },
     {
       title: "Due Date",
@@ -97,7 +127,7 @@ export default function TasksTable() {
         expandedRowRender: (task) => (
           <>
             <p className="m-0">This task is assigned to: {task.assignedTo.username}</p>
-            <p className="">For Projet: {task.project.projectName}</p>
+            <p className="capitalize">For Project: {task.project.projectName}</p>
           </>
         ),
         rowExpandable: (task) => task._id !== "",
