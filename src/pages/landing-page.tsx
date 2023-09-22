@@ -17,6 +17,8 @@ export default function LandingPage() {
             <p>I will provide you with the account, you can try login and test the functionality.</p>
             <p>Username: Leader</p>
             <p>password: zxc12345</p>
+            <Divider />
+            <p className="font-semibold text-base">To login or Register, click on the Avatar Icon at the Top Right Screen</p>
           </Card>
         </div>
       </div>
