@@ -25,7 +25,7 @@ export default function RegistrationForm({ initialValues, onRegister }: Registra
             <ErrorMessage name="email" component="div" className={classes.error} />
           </div>
           <div>
-            <Field name="password" as={Input} placeholder="password"  className="w-full h-12 border border-gray-800 px-3 rounded-lg" />
+            <Field type="password" name="password" as={Input} placeholder="password"  className="w-full h-12 border border-gray-800 px-3 rounded-lg" />
             <ErrorMessage name="password" component="div" className={classes.error} />
           </div>
           <Button type="primary" htmlType="submit" className="w-full h-12 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">

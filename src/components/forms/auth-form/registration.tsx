@@ -4,8 +4,7 @@ import { registerApi } from "../../../api/auth-api";
 import { User } from "../../../helpers/api-interface";
 import CardBorder from "../../UI/card-border";
 import Modal from "../../UI/modal";
-
-
+import { message } from "antd";
 
 export default function Registration() {
   const [formData] = useState({
@@ -21,6 +20,13 @@ export default function Registration() {
     try {
       await registerApi(user);
       console.log(`Registration success`, user);
+      message.config({
+        top: 100,
+      });
+      message.success("Register Success!");
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     } catch (error) {
       console.error("Registration Fail:", error);
     }
