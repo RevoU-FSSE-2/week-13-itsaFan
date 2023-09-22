@@ -3,13 +3,13 @@ export const user_type = {
   username: "",
   email: "",
   password: "",
-  role:"",
+  role: "",
 };
 
 export const context_user = {
-    currentUser: user_type,
-    isLoggedIn: false,
-    token: "",
-    login: (token: string) => {},
-    logout: () => {},
-  }
+  currentUser: user_type,
+  isLoggedIn: false,
+  token: "",
+  login: (token: string) => {},
+  logout: () => {},
+};
