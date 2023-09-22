@@ -11,6 +11,6 @@ export const context_user = {
   isLoggedIn: false,
   token: "",
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  login: (token: string) => {},
+  // login: (token: string) => {},
   logout: () => {},
 };
