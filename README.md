@@ -30,6 +30,13 @@ The purpose of this assignment is to learn React conepts and features. Learnig a
 2. Open the project and start with `npm install`, this will install all dependencies.
 3. Run `npx vite` to start the project.
 4. Visit the link & see further guide there on `landing page`.
+5. Don't forget to login with this data:
+```json
+{
+  "username": "Leader",
+  "password": "zxc12345"
+}
+```
 
 ## Website Link
 
