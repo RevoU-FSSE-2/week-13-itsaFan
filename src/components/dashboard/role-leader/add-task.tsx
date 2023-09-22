@@ -1,12 +1,13 @@
-import { createTask, getProjects } from "../../../api/leader-api";
+import { createTask, getProjects, getTasks } from "../../../api/leader-api";
 import AuthContext from "../../../context/auth-context";
 import { useContext, useEffect, useState, ChangeEvent, FormEvent } from "react";
 import Modal from "../../UI/modal";
 import CardBorder from "../../UI/card-border";
-import { Button } from "antd";
+import { Button, message } from "antd";
 import SuccessModal from "../../UI/success-modal";
 import { Project } from "../../../helpers/form-interface";
 import { useNavigate } from "react-router-dom";
+import { Task } from "../../../helpers/content-interface";
 
 export default function AddTaskForm() {
   const { token } = useContext(AuthContext);
@@ -14,6 +15,7 @@ export default function AddTaskForm() {
   const [selectedProjectId, setSelectedProjectId] = useState<string>("");
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
   const navigate = useNavigate();
+  const [tasks, setTasks] = useState<Task[]>([]);
   const [formData, setFormData] = useState({
     project: "",
     title: "",
@@ -37,8 +39,23 @@ export default function AddTaskForm() {
     fetchProjects();
   }, [token]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getTasks(token);
+        // console.log(response)
+        setTasks(response.tasks.reverse());
+      } catch (error) {
+        console.error("Error fetching tasks:", error);
+      }
+    };
+    fetchData();
+  }, [token]);
+
   const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
+
+
     if (name === "project") {
       setSelectedProjectId(value);
     }
@@ -47,6 +64,16 @@ export default function AddTaskForm() {
 
   const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    const lowercaseTitleFormData = formData.title.toLowerCase();
+
+    if (tasks.some((task) => task.title.toLowerCase() === lowercaseTitleFormData)) {
+      message.config({
+        top: 300,
+      });
+      message.error("Task with that title already exist");
+      // alert('Task with the same title already exists. Please choose a different title.');
+      return;
+    }
     try {
       await createTask(token, formData);
       console.log("Task created successfully");

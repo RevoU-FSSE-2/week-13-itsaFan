@@ -5,21 +5,22 @@ import { Table, Tag, Button, TableProps, ConfigProvider } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import { Link } from "react-router-dom";
 import type { FilterValue } from "antd/es/table/interface";
+import { Task } from "../../../helpers/content-interface";
 
-interface Task {
-  _id: string;
-  title: string;
-  description: string;
-  priority: string;
-  dueDate: string;
-  status: string;
-  assignedTo: {
-    username: string;
-  };
-  project: {
-    projectName: string;
-  };
-}
+// interface Task {
+//   _id: string;
+//   title: string;
+//   description: string;
+//   priority: string;
+//   dueDate: string;
+//   status: string;
+//   assignedTo: {
+//     username: string;
+//   };
+//   project: {
+//     projectName: string;
+//   };
+// }
 
 export default function TasksTable() {
   const [tasks, setTasks] = useState<Task[]>([]);

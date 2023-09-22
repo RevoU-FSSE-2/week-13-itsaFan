@@ -34,3 +34,18 @@ export type EditTaskProps = {
   };
   onSubmit: (data: { title: string; description: string; dueDate: string; priority: string }) => void;
 };
+
+export interface Task {
+  _id: string;
+  title: string;
+  description: string;
+  priority: string;
+  dueDate: string;
+  status: string;
+  assignedTo: {
+    username: string;
+  };
+  project: {
+    projectName: string;
+  };
+}
