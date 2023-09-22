@@ -2,14 +2,14 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import LandingPage from "./pages/landing-page";
 import DashboardPage from "./pages/dashboard-page";
-import { useContext } from "react";
-import AuthContext from "./context/auth-context";
+// import { useContext } from "react";
+// import AuthContext from "./context/auth-context";
 import TaskDetailPage from "./pages/task-detail-page";
 
 //createBrowserRouter, RouterProvider, Navigate,
 
 function App() {
-  const { isLoggedIn } = useContext(AuthContext);
+  // const { isLoggedIn } = useContext(AuthContext);
 
   // const router = createBrowserRouter([
   //   {
