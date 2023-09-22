@@ -2,7 +2,7 @@ import * as Yup from "yup";
 
 export const registerSchema = Yup.object({
   username: Yup.string().required("Username is required"),
-  email: Yup.string().required("Email is required"),
+  email: Yup.string().required("Email is required").email("Invalid email format"),
   password: Yup.string()
     .min(8, "Password must be at least 8 characters")
     .matches(/^(?=.*[A-Za-z])(?=.*\d)/, "Password must be alphanumeric")
@@ -25,7 +25,6 @@ export const createTaskSchema = Yup.object({
   priority: Yup.string().required("Priority is required"),
   assignedTo: Yup.string().required("Assigned To is required"),
 });
-
 
 export const taskValidationSchema = Yup.object().shape({
   project: Yup.string().required("Project is required"),
