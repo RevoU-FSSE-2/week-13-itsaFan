@@ -36,6 +36,9 @@ export default function EditTask({ task }: FilledTaskProps) {
           top: 180,
         });
         message.success("Task updated successfully!");
+        setTimeout(() => {
+          window.location.reload();
+        }, 1250);
         console.log(response);
       }
     } catch (error) {

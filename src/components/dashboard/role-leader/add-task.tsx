@@ -67,6 +67,7 @@ export default function AddTaskForm() {
   const handleCloseSuccessModal = () => {
     setIsSuccessModalOpen(false);
     navigate("/dashboard");
+    window.location.reload()
   };
 
   return (
