@@ -71,7 +71,7 @@ export default function AddTaskForm() {
   };
 
   return (
-    <Modal buttonTitle="+ Add" className="bg-green-600 hover:bg-opacity-80 mb-2 mx-6" bodyStyle={{ margin: "90px 0 0 0" }}>
+    <Modal buttonTitle="+ Add" className="bg-green-600 hover:bg-opacity-80 mb-2 ml-6" bodyStyle={{ margin: "90px 0 0 0" }}>
       <CardBorder title="Add Task">
         <form onSubmit={handleFormSubmit}>
           <div className="">

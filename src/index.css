@@ -38,3 +38,7 @@ ul {
   padding-top: 2rem;
   text-align: center;
 }
+
+.ant-btn-primary {
+  background-color: rgb(96 165 250);
+}
